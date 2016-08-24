@@ -11,16 +11,17 @@ tagline:          blog
 
 
 # http://jekyllrb.com/docs/github-pages/#project-page-url-structure
-baseurl: https://stevans.github.io/
+#baseurl: https://stevans.github.io/
 #baseurl: ""
-blogurl: https://stevans.github.io/blog
+#blogurl: https://stevans.github.io/blog
+blogurl: "blog"
 
 
   # Site settings
 
 email:       stevans@astro.as.utexas.edu
 author:      Matt Stevans
-description: "blog"
+description: "Matt Stevans - Astronomer - Homepage"
 url:         "http://stevans.github.io"
 
 # Google analytics
