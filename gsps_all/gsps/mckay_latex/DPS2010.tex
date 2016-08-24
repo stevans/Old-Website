@@ -1,0 +1,233 @@
+% Template file for an a0 landscape poster.
+% Written by Graeme, 2001-03 based on Norman's original microlensing
+% poster.
+%
+% See discussion and documentation at
+% <http://www.astro.gla.ac.uk/users/norman/docs/posters/> 
+%
+% $Id: poster-template-landscape.tex,v 1.2 2002/12/03 11:25:46 norman Exp $
+
+
+% Default mode is landscape, which is what we want, however dvips and
+% a0poster do not quite do the right thing, so we end up with text in
+% landscape style (wide and short) down a portrait page (narrow and
+% long). Printing this onto the a0 printer chops the right hand edge.
+% However, 'psnup' can save the day, reorienting the text so that the
+% poster prints lengthways down an a0 portrait bounding box.
+%
+% 'psnup -w85cm -h119cm -f poster_from_dvips.ps poster_in_landscape.ps'
+
+\documentclass[a0]{a0poster}
+% You might find the 'draft' option to a0 poster useful if you have
+% lots of graphics, because they can take some time to process and
+% display. (\documentclass[a0,draft]{a0poster})
+
+\pagestyle{empty}
+\setcounter{secnumdepth}{0}
+
+% The textpos package is necessary to position textblocks at arbitary 
+% places on the page.
+\usepackage[absolute]{textpos}
+
+% Graphics to include graphics. Times is nice on posters, but you
+% might want to switch it off and go for CMR fonts.
+\usepackage{graphics,wrapfig,times,epsfig,epstopdf,graphicx}
+
+% These colours are tried and tested for titles and headers. Don't
+% over use color!
+\usepackage{color}
+\definecolor{DarkBlue}{rgb}{0.1,0.1,0.5}
+\definecolor{Red}{rgb}{0.9,0.0,0.1}
+\definecolor{Green}{rgb}{0.0,0.5,1.0}
+
+% see documentation for a0poster class for the size options here
+\let\Textsize\normalsize
+\def\Head#1{\noindent\hbox to \hsize{\LARGE\color{DarkBlue} #1}\bigskip}
+\def\LHead#1{\noindent{\LARGE\color{DarkBlue} #1}\bigskip}
+\def\Subhead#1{\noindent{\normalsize\color{Black} #1}\bigskip}
+\def\Title#1{\noindent{\veryHuge\color{Red} #1}}
+\def\SecTitle#1{\noindent{\veryHuge\color{Green} #1}}
+
+
+% Set up the grid
+%
+% Note that [40mm,40mm] is the margin round the edge of the page --
+% it is _not_ the grid size. That is always defined as 
+% PAGE_WIDTH/HGRID and PAGE_HEIGHT/VGRID. In this case we use
+% 23 x 12. This gives us three columns of width 7 boxes, with a gap of
+% width 1 in between them. 12 vertical boxes is a good number to work
+% with.
+%
+% Note however that texblocks can be positioned fractionally as well,
+% so really any convenient grid size can be used.
+%
+\TPGrid[2in,2in]{40}{40}      % 3 cols of width 7, plus 2 gaps width 1
+
+\parindent=0pt
+\parskip=0.5\baselineskip
+
+
+
+\begin{document}
+
+% Understanding textblocks is the key to being able to do a poster in
+% LaTeX. In
+%
+%    \begin{textblock}{wid}(x,y)
+%    ...
+%    \end{textblock}
+%
+% the first argument gives the block width in units of the grid
+% cells specified above in \TPGrid; the second gives the (x,y)
+% position on the grid, with the y axis pointing down.
+
+\begin{textblock}{30}(5,0)
+\center
+\Title{Forbidden Oxygen Lines in Comets C/2006 W3 Christensen and C/2007 Q3 Siding Spring at Large Heliocentric Distance}
+\end{textblock}
+
+\begin{textblock}{5}(0,0)
+\includegraphics[width=0.8\textwidth]{NMSUlogo}
+\end{textblock}
+
+\begin{textblock}{40}(0,3)
+\center
+\LHead{Adam McKay$^1$, Nancy Chanover$^1$, Jeff Morgenthaler$^2$, Anita Cochran$^3$, Walt Harris$^4$, Neil Dello Russo$^5$}
+\break
+\textsl{$^1$New Mexico State University, $^2$Planetary Science Insitute, $^3$University of Texas Austin, $^4$University of California Davis, $^5$Johns Hopkins Applied Physics Laboratory}
+\end{textblock}
+
+\begin{textblock}{12}(0,5)
+\center
+\SecTitle{Introduction}\\
+\bigskip
+\raggedright
+\normalsize
+{
+\begin{itemize}
+\item Cometary composition is important in that comets represent pristine material left over from the Solar System's formation.  Composition of the nucleus is inferred from the composition of the coma, which is determined by sublimation of the surface ices.  Therefore we need to understand the sublimation behavior of the primary ices: H$_2$O, CO$_2$, and CO.
+\item Atomic oxygen is an effective tracer for H$_2$O, CO$_2$, and CO in a cometary coma.  The intensity ratio of the 5577 $\AA$ line (i.e. $^1$S atoms) to the sum of the 6300 $\AA$ and 6364 $\AA$ lines (i.e. $^1$D atoms) can reveal the identity of the dominant parent of the oxygen atoms (Festou and Feldman 1981).  If H$_2$O is the dominant parent, the ratio of the 5577 line to the sum of the 6300 and 6364 line will be around 0.1, while if CO$_2$ or CO is the dominant parent, this ratio will be $\sim$ 1.  The line ratio cannot be greater than unity since every atom that decays through the 5577 line will also decay through either the 6300 or 6364 line. 
+\item All measurements for comets at $\sim$ 1 AU from the Sun suggest that water is the dominant parent (e.g. Cochran and Cochran 2001, Cochran 2008).  Measurements by Furusho et al. (2006) and Capria et al. (2010) at $\sim$ 2.5 AU from the Sun suggest CO$_2$ plays an increased role in supplying the OI population.
+\item Here we present observations of the forbidden oxygen lines in comets C/2006 W3 Christensen and C/2007 Q3 Siding Spring at heliocentric distances of 3.13 and 2.96 AU, respectively.
+\end{itemize}
+}
+\end{textblock}
+
+\begin{textblock}{12}(0,19)
+\center
+\SecTitle{Observations}\\
+\bigskip
+\raggedright
+\normalsize
+{
+\begin{itemize}
+\item We obtained observations using the ARCES echelle spectrometer (R $\sim$ 31,500) on the 3.5 meter telescope at Apache Point Observatory.
+\item We observed C/2006 W3 Christensen on UT August 1, 2009 under non-photometric conditions.  We observed C/2007 Q3 Siding Spring on UT March 28 2010 (about 10 days after an observed split of the nucleus) under photometric conditions.
+\item We centered the 3.2" $\times$ 1.6" slit on the optocenter of the comet in both cases.  We observed the 5577, 6300, and 6364 lines simultaneously.
+\end{itemize}
+}
+\end{textblock}
+
+\begin{textblock}{12}(14,5)
+\center
+\SecTitle{C/2006 W3 Christensen}\\
+\bigskip
+\includegraphics[width=0.8\textwidth]{Christensen_5577_twogauss}
+\includegraphics[width=0.8\textwidth]{Christensen_6300_twogauss}
+\includegraphics[width=0.8\textwidth]{Christensen_6364_twogauss}
+\end{textblock}
+
+\begin{textblock}{12}(14,35)
+\center
+\raggedright
+\normalsize{
+The three oxygen lines for Comet Christensen are shown above.  The lines are blended with their telluric counterparts and therefore deblending was neccessary.  Gaussian fits to the line profiles which account for both the telluric and cometary lines are overplotted in purple.  We derive a line ratio (5577/(6300+6364)) of 0.19 $\pm$ 0.02.
+a) The 5577 line for Comet Christensen.  Note that a single Gaussian (plotted in red) cannot account for the excess flux blueward of the telluric line that is due to the cometary line.
+b) The 6300 line for Comet Christensen.
+c) The 6364 line for Comet Christensen.
+}
+\end{textblock}
+
+
+\begin{textblock}{12}(0,26)
+\center
+\SecTitle{C/2007 Q3 Siding Spring}\\
+\bigskip
+\includegraphics[width=0.8\textwidth]{SidingSpring_6300}
+\end{textblock}
+
+\begin{textblock}{12}(0,37.5)
+\normalsize
+{
+The 6300 line for Comet Siding Spring.  We did not detect the 5577 and 6364 lines. Although we are unable to measure the line ratio (5577/(6300+6364)) in this case, we can place an upper limit on its value.  We find that this upper limit is 0.32.
+}
+\end{textblock}
+
+\begin{textblock}{12}(28,22.25)
+\center
+\SecTitle{Conclusions}\\
+\bigskip
+\raggedright
+\normalsize
+{
+\begin{itemize}
+\item These oxygen line ratios are not consistent with the vaporization model put forth by Delsemme (1982).  According to their model, CO$_2$ should have a production rate much greater than that of H$_2$O ($\gg$ 10), which is not seen.
+\item These ratios are consistent with the model put forth by Meech and Svoren (2004), in which a more realistic albedo for the nucleus is used.  The lower albedo used by Meech and Svoren results in water sublimation being possible at large heliocentric distances.
+\item The value of $\frac{N_{CO_2}}{N_{H_2O}}$ we find for Christensen is consistent with the crossing of the CO and OH production rates at 3-4 AU in C/1995 O1 Hale-Bopp observed by Biver et al. (2002).  This would imply 3-4 AU from the Sun is a transition region where CO$_2$ and CO become more important than H$_2$O for driving cometary activity.
+\end{itemize}
+} 
+\end{textblock}
+
+\begin{textblock}{12}(28,5)
+\center
+\SecTitle{Results}\\
+\bigskip
+\raggedright
+\normalsize
+{
+\begin{itemize}
+\item The line ratio (5577/(6300+6364)) found for C/2006 W3 Christensen is higher than found in previous studies, suggesting that CO$_2$ and CO may be playing a more significant role in supplying the OI population.  This could be due to a decreased volatility of H$_2$O relative to CO$_2$ because of its fairly large heliocentric distance, Christensen being inherently rich in CO$_2$ relative to H$_2$O, or a combination of both.
+\item We have placed an upper limit on the line ratio for C/2007 Q3 Siding Spring of 0.32.  This value is consistent with the line ratio found for Christensen and other comets.
+\item The following equation can be used to determine the ratio $\frac{N_{CO_2}}{N_{H_2O}}$
+\begin{equation}
+\frac{N_{CO_2}}{N_{H_2O}} = \frac{RA^{^1D}_{H_2O}-A^{^1S}_{H_2O}}{A^{^1S}_{CO_2}-RA^{^1D}_{CO_2}}
+\end{equation}
+where $N_x$ denotes the number density of species $x$, $R$ is the measured oxygen line ratio and $A^x_y$ represents the excitation rate of molecule $y$ for producing oxygen atoms with excitation state $x$.
+\item For Christensen, we find a value of N$_{CO_2}$/N$_{H_2O}$= 0.46$\pm$0.07.  For Siding Spring, the upper limit on the number density ratio is 1.11.\\
+\item We use the 6300 line flux for Siding Spring and aperture corrections derived from Haser Models for H$_2$O, CO$_2$, and CO with standard parameters to predict production rates of these molecules under the assumption that each species dominates the OI production.  We also consider cases where OI has multiple nonnegligible parents. 
+\item We find that the contribution of CO to the OI population is negligible.  Using our upper limit on the line ratio for Siding Spring, we find that the production rate of water is between appoximately 10$^{27}$ and 10$^{28}$ mol/s, while that of CO$_2$ is less than $\sim$ 3 $\times$ 10$^{27}$ mol/s.
+\end{itemize}
+}
+\end{textblock}
+
+\begin{textblock}{12}(28, 30.75)
+\center
+\SecTitle{Acknowledgments}\\
+\bigskip
+\raggedright
+\normalsize
+{
+This work is supported by the NASA ESPCoR program through grant number NNX08AV85A.
+}
+\end{textblock}
+
+\begin{textblock}{12}(28, 33.25)
+\center
+\SecTitle{References}\\
+\bigskip
+\raggedright
+\normalsize
+{
+Biver et al. 2002, \textit{Earth, Moon, and Planets}, 90, 1, 5-14\\
+Capria, M.T. et al. 2010, \textit{Astronomy and Astrophysics} preprint doi http://dx/doi.org/10.1051/0004-6361/200913889\\
+Cochran, A.L. and Cochran, W.D. 2001, \textit{Icarus}, 154, 2, 381-390\\
+Cochran, A.L. 2008, \textit{Icarus}, 198, 1, 181-188\\ 
+Delsemme, A.H. 1982, In \textit{Comets} pg. 85\\
+Festou and Feldman 1981, \textit{Astronomy and Astrophysics}, 103, 1, 154-159\\
+Furusho et al. 2006, \textit{Advances in Space Research}, 38, 9, 1983-1986\\
+Meech and Svoren 2004, in \textit{Comets II} pg. 317\\
+}
+\end{textblock}
+
+
+\end{document}
