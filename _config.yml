@@ -11,9 +11,9 @@ tagline:          blog
 
 
 # http://jekyllrb.com/docs/github-pages/#project-page-url-structure
-#baseurl: https://stevans.github.io/
-baseurl: ""
-blogurl: "blogXX"
+baseurl: https://stevans.github.io/
+#baseurl: ""
+blogurl: https://stevans.github.io/blog
 
 
   # Site settings
