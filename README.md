@@ -1,11 +1,9 @@
-gully.github.io
+stevans.github.io
 ===
 
-The webpage template is from:
+The webpage template cribbed from:
 
-https://github.com/ianli/elbowpatched-boilerplate
-
-Shoutout to Ian Li, who made the template.
+http://gully.github.io/
 
 To build the site:
 
